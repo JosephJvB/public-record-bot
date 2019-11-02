@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include head.ejs %>
+  <title>SURF | PBs</title>
+</head>
+<body>
+  <%- include header.ejs %>
+  <main>
+    <h1><%= title %></h1>
+    <input id="search" type="text">
+    <div id="results">
+    </div>
+  </main>
+  <footer>
+    <p>joevanbo™</p>
+  </footer>
+  <p id="omegalul" style="display:none">
+      <%= data %>
+    </p>
+  <script>
+    const data = JSON.parse(document.getElementById('omegalul').innerHTML);
+    const search = document.getElementById('search');
+    const results = document.getElementById('results');
+
+    search.addEventListener('input', debounceSearch(onSearchEvent));
+    function onSearchEvent (e) {
+      if(!e.target.value) {
+        results.innerHTML = '';
+        return;
+      }
+
+      const regexp = new RegExp(`^${e.target.value}`, 'gi');
+
+      const matches = data.filter(rec => {
+        const match = Object.keys(rec).find(k => rec[k].match(regexp));
+        return !!match;
+      });
+      const plural = matches.length === 1 ? '' : 's';
+      results.innerHTML = `<p>${matches.length} result${plural}</p><br><br>`
+      results.innerHTML += matches.map(m => {
+        return `<div class="res">
+          <p class="uname">${m.user}</p>
+          <p>${m.type}: ${m.map}, ${m.time}s</p>
+          <a href="${m.link}" target="_blank">${m.link}</a>
+        </div>
+        <br>`
+      }).join('');
+
+      return;
+    };
+  </script>
+</body>
+</html>

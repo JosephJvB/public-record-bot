@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+  font-family: 'source code pro', monospace;
+}
+html, body {
+  margin: 0;
+  text-align: center;
+}
+main {
+  max-width: 600px;
+  height: auto !important;
+  margin: 0 auto;
+  height: 100%;
+  min-height: 100%;
+}
+h1 {
+  font-weight: 400;
+}
+input {
+  width: 70%;
+  margin: 0 auto;
+  height: 50px;
+  border-radius: 5px;
+  font-size: 22px;
+  padding: 0 10px;
+  background-color: #eaeaea;
+  box-shadow: inset 1px 1px;
+  color: black;
+}
+i {
+  float: right;
+}
+#results {
+  width: 70%;
+  margin: 0 auto;
+  text-align: left;
+}
+.res {
+  border-radius: 3px;
+  padding: 17px;
+  padding-top: 0px;
+  background-color: #eaeaea;
+  box-shadow: -5px 5px #a0a0a0;
+  border: black solid 1.5px;
+}
+.res:hover {
+}
+.uname {
+  font-size: 19px;
+}
